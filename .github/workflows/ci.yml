@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            
+            - name: Setup Helm
+              uses: azure/setup-helm@v4.2.0
+            
+            - name: Lint Helm Charts
+              run: helm lint charts/*
+            
+            - name: Install Kind Cluster
+              uses: helm/kind-action@v1.5.0
+            
+            - name: Test Helm Charts
+              run: |
+                for chart in charts/*/; do
+                    helm install test-release "$chart" --dry-run
+                done
+            
+            
