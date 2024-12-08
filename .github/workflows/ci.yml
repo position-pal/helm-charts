@@ -9,18 +9,18 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
               with:
                 fetch-depth: 0
             
             - name: Setup Helm
-              uses: azure/setup-helm@v4.2.0
+              uses: azure/setup-helm@fe7b79cd5ee1e45176fcad797de68ecaf3ca4814 # v4.2.0
             
             - name: Lint Helm Charts
               run: helm lint charts/*
             
             - name: Install Kind Cluster
-              uses: helm/kind-action@v1.5.0
+              uses: helm/kind-action@d8ccf8fb623ce1bb360ae2f45f323d9d5c5e9f00 # v1.5.0
             
             - name: Test Helm Charts
               run: |
