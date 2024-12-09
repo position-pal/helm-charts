@@ -1,0 +1,14 @@
+# Value files for the chart
+
+# Image informations
+image:
+  repository: positionpal/location-service
+  tag: 0.7.0
+  pullPolicy: IfNotPresent
+
+# Service informations
+service:
+  type: ClusterIP
+  port: 8080
+
+podAnnotations: {}
