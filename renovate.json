@@ -2,5 +2,37 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
       "github>position-pal/renovate-config"
-    ]
+    ],
+    "packageRules": [
+      {
+        "matchDatasources":["docker"],
+        "matchUpdateTypes": ["major", "minor", "patch"],
+        "automerge": true
+      }
+    ],
+    "customManagers": [
+      {
+        "fileMatch": ["charts/.*/Chart\\.yaml$"],
+        "matchStrings": [
+          "appVersion: \"?(?<currentValue>.*?)\"?$",
+          "version: \"?(?<currentValue>.*?)\"?$"
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "{{replace 'charts/' '' (lookup `name`)}}"
+      },
+      {
+        "fileMatch": ["charts/.*/values\\.yaml$"],
+        "matchStrings": [
+          "repository: (?<registryUrl>.*?)\n\\s*tag: \"?(?<currentValue>.*?)\"?"
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "{{replace 'repository: ' '' registryUrl}}"
+      }
+    ],
+    "updateAutomerge": false,
+    "automergeType": "branch",
+    "separateMajorMinor": true,
+    "separateMinorPatch": true,
+    "prHourlyLimit": 4,
+    "prConcurrentLimit": 10
 }

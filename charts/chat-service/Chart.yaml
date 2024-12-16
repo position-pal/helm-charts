@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 0.1.0
+description: Helm chart for Position Pal Chat service
+type: application
+name: chat-service
+version: 0.1.0
+dependencies:
+  - name: cassandra
+    version: "12.1.0"
+    repository: "https://charts.bitnami.com/bitnami"
