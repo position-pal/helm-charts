@@ -25,6 +25,7 @@ jobs:
             - name: Test Helm Charts
               run: |
                 for chart in charts/*/; do
+                    helm dependency build "$chart"
                     helm install test-release "$chart" --dry-run
                 done
             
