@@ -22,6 +22,6 @@ initContainers:
       - name: POSTGRES_PASSWORD
         valueFrom:
             secretKeyRef:
-                name: {{ .Release.Name }}-user-service-secrets
-                key: postgres-password
+                name: {{ .Release.Name }}-postgresql
+                key: password
 {{- end -}}
