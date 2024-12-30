@@ -1,10 +1,28 @@
 
+
+config:
+  image:
+    repository: giovaz94/ls-test
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  servicename: locservice
+  replicaNumber: 2
+  requiredContactPointNr: 2
+
+  managementPort: 8558
+  httpPort: 8080
+  grpcPort: 5052
+
+  mapboxApi: "pk.eyJ1IjoiZ2lvdmF6OTQiLCJhIjoiY201NmszNG9tMDFjNDJqcjdsNmp5dHN1byJ9.34fBoc_igQ5Qt0mtkmSvwQ"
+
 # Configure the connection information for the rabbtimq service
 rabbitmq:
   username: user
-  password: GJthvthGh5bfn9dG
+  password: cdZ1JMDMLWS7PHvE
   namespace: rabbitmq
   serviceName: rabbitmq
+  virtualHost: /
   port: 5672
 
 # Configure the connection information for the cassandra service
@@ -17,14 +35,5 @@ cassandra:
     user: admin
     password: password
 
-  replicaCount: 3
-
+  replicaCount: 1
   initDBConfigMap: script-db-configmap
-  
-  resources:
-    requests:
-      memory: 4Gi
-      cpu: 2
-    limits:
-      memory: 8Gi
-      cpu: 4

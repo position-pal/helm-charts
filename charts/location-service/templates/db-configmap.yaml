@@ -4,7 +4,7 @@ metadata:
   name: script-db-configmap
 data:
   init.cql: |
-    CREATE KEYSPACE IF NOT EXISTS locationservice WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1' : 3}; 
+    CREATE KEYSPACE IF NOT EXISTS locationservice WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1' : 1}; 
 
     USE locationservice;
 
@@ -88,3 +88,28 @@ data:
 
     CREATE TABLE IF NOT EXISTS all_persistence_ids(
     persistence_id text PRIMARY KEY);
+
+    CREATE TABLE ScopedUserInfo (
+      GroupId TEXT,
+      UserId TEXT,
+      Status TEXT,
+      Latitude DOUBLE,
+      Longitude DOUBLE,
+      LastUpdated TIMESTAMP,
+      PRIMARY KEY (GroupId, UserId)
+    );
+
+    CREATE TABLE ScopedUserRoutes (
+        GroupId TEXT,
+        UserId TEXT,
+        Timestamp TIMESTAMP,
+        Latitude DOUBLE,
+        Longitude DOUBLE,
+        PRIMARY KEY (GroupId, UserId, Timestamp)
+    ) WITH CLUSTERING ORDER BY (UserId ASC, Timestamp DESC);
+
+    CREATE TABLE UserGroupsByUserId (
+        UserId TEXT,
+        GroupId TEXT,
+        PRIMARY KEY (UserId, GroupId)
+    );
