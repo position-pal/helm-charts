@@ -67,6 +67,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-location-service-secrets
                   key: cassandra-password
+            - name: RABBITMQ_VIRTUAL_HOST
+              value: {{ .Values.rabbitmq.virtualHost | quote }}
             - name: RABBITMQ_HOST
               value: "{{ .Values.rabbitmq.serviceName }}.{{ .Values.rabbitmq.namespace }}.svc.cluster.local"
             - name: RABBITMQ_PORT
