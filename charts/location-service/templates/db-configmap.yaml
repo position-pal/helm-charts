@@ -125,7 +125,7 @@ data:
       PRIMARY KEY ((projection_name, partition), projection_key)
     );
 
-    CREATE TABLE ScopedUserInfo (
+    CREATE TABLE IF NOT EXISTS ScopedUserInfo (
       GroupId TEXT,
       UserId TEXT,
       Status TEXT,
@@ -135,7 +135,7 @@ data:
       PRIMARY KEY (GroupId, UserId)
     );
 
-    CREATE TABLE ScopedUserRoutes (
+    CREATE TABLE IF NOT EXISTS ScopedUserRoutes (
       GroupId TEXT,
       UserId TEXT,
       Timestamp TIMESTAMP,
@@ -144,8 +144,14 @@ data:
       PRIMARY KEY (GroupId, UserId, Timestamp)
     ) WITH CLUSTERING ORDER BY (UserId ASC, Timestamp DESC);
 
-    CREATE TABLE UserGroupsByUserId (
+    CREATE TABLE IF NOT EXISTS UserGroupsByUserId (
       UserId TEXT,
       GroupId TEXT,
       PRIMARY KEY (UserId, GroupId)
+    );
+
+    CREATE TABLE IF NOT EXISTS UserGroupsByGroupId (
+      GroupId TEXT,
+      UserId TEXT,
+      PRIMARY KEY (GroupId, UserId)
     );
