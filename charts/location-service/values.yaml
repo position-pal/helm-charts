@@ -2,7 +2,7 @@
 
 config:
   image:
-    repository: giovaz94/ls-test
+    repository: lucatassi10/ls-test
     tag: latest
     pullPolicy: IfNotPresent
 
@@ -14,12 +14,12 @@ config:
   httpPort: 8080
   grpcPort: 5052
 
-  mapboxApi: "pk.eyJ1IjoiZ2lvdmF6OTQiLCJhIjoiY201NmszNG9tMDFjNDJqcjdsNmp5dHN1byJ9.34fBoc_igQ5Qt0mtkmSvwQ"
+  mapboxApi: ""
 
 # Configure the connection information for the rabbtimq service
 rabbitmq:
   username: user
-  password: cdZ1JMDMLWS7PHvE
+  password: EYaSxzkAXtqwHYsL
   namespace: rabbitmq
   serviceName: rabbitmq
   virtualHost: /
@@ -35,5 +35,5 @@ cassandra:
     user: admin
     password: password
 
-  replicaCount: 1
+  replicaCount: 3
   initDBConfigMap: script-db-configmap
