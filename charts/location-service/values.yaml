@@ -1,8 +1,7 @@
 
-
 config:
   image:
-    repository: lucatassi10/ls-test
+    repository: positionpal/location-service
     tag: latest
     pullPolicy: IfNotPresent
 
@@ -35,5 +34,5 @@ cassandra:
     user: admin
     password: password
 
-  replicaCount: 3
+  replicaCount: 2
   initDBConfigMap: script-db-configmap
