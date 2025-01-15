@@ -15,10 +15,13 @@ config:
 
   mapboxApi: ""
 
+  akka:
+    licenseKey: ""
+
 # Configure the connection information for the rabbtimq service
 rabbitmq:
   username: user
-  password: EYaSxzkAXtqwHYsL
+  password: 3P76p1ODAfi4R2WO
   namespace: rabbitmq
   serviceName: rabbitmq
   virtualHost: /

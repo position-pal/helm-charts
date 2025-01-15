@@ -6,7 +6,6 @@ initContainers:
       - /bin/bash
       - -ec
       - |
-        echo ${POSTGRES_PASSWORD}
         until PGPASSWORD="${POSTGRES_PASSWORD}" psql -h "${POSTGRES_HOST}" -U "${POSTGRES_USER}" -d "${POSTGRES_DB}" -c "SELECT 1"; do
           echo "Waiting for PostgreSQL to be ready..."
           sleep 2
