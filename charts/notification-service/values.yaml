@@ -1,0 +1,17 @@
+
+# Configure the connection information for the postgresql service
+# see https://artifacthub.io/packages/helm/bitnami/postgresql for more information about the configuration
+postgresql:
+  enabled: true
+  port: 5432
+  
+  global:
+    postgresql:
+      auth:
+        username: user
+        password: password
+        postgresPassword: password
+
+  primary:
+    initdb:
+      scriptsConfigMap: script-db-configmap
