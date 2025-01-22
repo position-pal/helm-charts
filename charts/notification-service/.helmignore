@@ -37,3 +37,8 @@ yarn.lock
 
 # Semantic Relase files
 release.config.js
+
+# Secrets and sensitive information
+.env
+.env.local
+./files/secrets/*

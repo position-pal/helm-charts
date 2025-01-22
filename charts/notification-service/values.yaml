@@ -1,3 +1,26 @@
+# Control the number of replicas for the chat-service
+replicaCount: 1
+
+# Base informations for the service image
+image:
+  repository: positionpal/notification-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Firebase configuration
+firebase:
+  serviceAccountFilePath: "./files/secrets/service-account.json"
+
+# Configure the connection information for the rabbtimq service
+rabbitmq:
+  username: user
+  password: pF4mGtFaDrSeGO31
+  namespace: rabbitmq
+  serviceName: rabbitmq
+  virtualHost: /
+  port: 5672
+
+grpcPort: 5052
 
 # Configure the connection information for the postgresql service
 # see https://artifacthub.io/packages/helm/bitnami/postgresql for more information about the configuration
