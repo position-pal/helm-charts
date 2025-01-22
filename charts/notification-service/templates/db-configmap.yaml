@@ -4,8 +4,6 @@ metadata:
   name: script-db-configmap
 data:
   init.sql: |
-    CREATE DATABASE notifications_service;
-
     \c notifications_service;
 
     CREATE TABLE users_tokens (

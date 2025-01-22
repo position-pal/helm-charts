@@ -1,7 +1,4 @@
-
-akka:
-  licenseKey: ""
-
+# Base informations for the service image
 config:
   image:
     repository: giovaz94/chat-test
@@ -16,10 +13,13 @@ config:
   httpPort: 8080
   grpcPort: 5052
 
+  akka:
+    licenseKey: ""
+
 # Configure the connection information for the rabbtimq service
 rabbitmq:
   username: user
-  password: M5dC0D5ZMtSNG6F6
+  password: COZxha56Pr8hVXHQ
   namespace: rabbitmq
   serviceName: rabbitmq
   virtualHost: /
